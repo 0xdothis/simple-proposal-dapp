@@ -22,14 +22,11 @@ const useCreateProposal = () => {
       description,
       recipient,
       amountInwei,
-      durationInSeconds,
+      deadline,
     }: CreateProposalType) => {
       const treasuryBalance = await publicClient?.getBalance({
         address: import.meta.env.VITE_QUADRATIC_GOVERNANCE_VOTING_CONTRACT,
       });
-
-      console.log(parseEther(treasuryBalance!.toString()) > amountInwei);
-      console.log(amountInwei);
 
       if (!address || !walletClient) {
         toast.error("Not connected", {
@@ -59,12 +56,7 @@ const useCreateProposal = () => {
         address: import.meta.env.VITE_QUADRATIC_GOVERNANCE_VOTING_CONTRACT,
         abi: QUADRATIC_GOVERNANCE_VOTING_CONTRACT_ABI,
         functionName: "createProposal",
-        args: [
-          description,
-          recipient,
-          amountInwei,
-          BigInt(durationInSeconds.getTime()),
-        ],
+        args: [description, recipient, amountInwei, BigInt(Number(deadline))],
       });
 
       console.log("txHash: ", txHash);

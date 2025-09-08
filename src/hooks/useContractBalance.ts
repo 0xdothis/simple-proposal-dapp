@@ -1,9 +1,6 @@
 import React from "react";
 import { publicClient } from "@/config/clients";
-//import { formatEther } from "viem";
-
 import { parseAbiItem } from "viem";
-//import { QUADRATIC_GOVERNANCE_VOTING_CONTRACT_ABI } from "../config/ABI";
 
 export function useContractBalance() {
   const [newBalance, setNewBalance] = React.useState<bigint | undefined>(
