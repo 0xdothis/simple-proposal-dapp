@@ -22,38 +22,42 @@ const ProposalCard = ({
   handleVote,
 }: ProposalCardDataType) => {
   return (
-    <Card className="w-full mx-auto">
+    <Card className="w-full mx-auto bg-green-50">
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <span>Proposal #{id}</span>
           <span>Vote Count: {voteCount}</span>
         </CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="text-lg capitalize tracking-wider font-bold">
+          {description}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div>
-          <span>Recipient</span>
+          <span className="font-bold mr-2">Recipient:</span>
           <span>{shortenAddress({ address: recipient, length: 4 })}</span>
         </div>
         <div>
-          <span>Amount: </span>
-          <span>{amount ? formatEther(BigInt(amount)) : '0'} Ether</span>
+          <span className="font-bold mr-2">Amount:</span>
+          <span>{amount ? formatEther(BigInt(amount)) : "0"} Ether</span>
         </div>
         <div>
-          <span>Deadline: </span>
-          <span>{deadline ? new Date(deadline * 1000).toLocaleDateString() : 'N/A'}</span>
+          <span className="font-bold mr-2">Deadline:</span>
+          <span>
+            {deadline ? new Date(deadline * 1000).toLocaleDateString() : "N/A"}
+          </span>
         </div>
         <div>
-          <span>Executed: </span>
-          <span>{executed ? 'Yes' : 'No'}</span>
+          <span className="font-bold mr-2">Executed:</span>
+          <span>{executed ? "Yes" : "No"}</span>
         </div>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
+      <CardFooter className="flex flex-col gap-2">
         <Button
           onClick={handleVote}
           disabled={isVoted}
           type="submit"
-          className="w-full"
+          className="w-full bg-green-700 text-gray-100 hover:bg-green-800"
         >
           Vote
         </Button>

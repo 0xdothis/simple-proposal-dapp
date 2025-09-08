@@ -52,25 +52,21 @@ function App() {
       (proposal.deadline && proposal.deadline * 1000 <= Date.now()),
   );
 
-  /** const activePropsals = proposals.filter(
-    (proposal) =>
-      !proposal.executed ||
-      (proposal.deadline && proposal.deadline * 1000 > Date.now()),
-  );
-  const inActiveProposals = proposals.filter(
-    (proposal) =>
-      proposal.executed ||
-      (proposal.deadline && proposal.deadline * 1000 < Date.now()),
-  );*/
   return (
     <AppLayout chairPersonAddress={chairPerson}>
       <div className="flex w-full flex-col gap-6">
         <Tabs defaultValue="active" className="mt-4">
           <TabsList>
-            <TabsTrigger value="active" className="cursor-pointer">
+            <TabsTrigger
+              value="active"
+              className="cursor-pointer text-lg font-bold"
+            >
               Active
             </TabsTrigger>
-            <TabsTrigger value="inactive" className="cursor-pointer">
+            <TabsTrigger
+              value="inactive"
+              className="cursor-pointer text-lg font-bold"
+            >
               InActive
             </TabsTrigger>
           </TabsList>

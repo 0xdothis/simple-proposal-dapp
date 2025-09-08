@@ -28,11 +28,13 @@ const AppLayout = ({ children, chairPersonAddress }: AppLayoutType) => {
 
   return (
     <div className="w-full h-full">
-      <header className="h-20 bg-amber-100 p-4">
+      <header className="h-20 bg-green-800 p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <span>LOGO</span>
+          <span className="text-green-300 text-2xl font-bold font-mono">
+            LOGO
+          </span>
           <div className="flex gap-4 items-center">
-            <Button className="font-bold text-md bg-white text-black hover:bg-slate-100">
+            <Button className="font-bold text-md bg-green-700 text-green-300 hover:bg-green-600">
               Contract Balance: {contractBalance}{" "}
               {Number(contractBalance) > 1 ? "Ethers" : "Ether"}{" "}
             </Button>
@@ -45,13 +47,11 @@ const AppLayout = ({ children, chairPersonAddress }: AppLayoutType) => {
           </div>
         </div>
       </header>
-      <main className="min-h-[calc(100vh-10rem)] w-full">
+      <main className="min-h-[calc(100vh-10rem)] w-full bg-green-50">
         <div className="container mx-auto">{children}</div>
       </main>
-      <footer className="h-20 bg-amber-100 p-4">
-        <div className="container mx-auto">
-          &copy; cohort xiii {new Date().getFullYear()}
-        </div>
+      <footer className="h-20 text-lg bg-green-800 p-4 text-green-300 flex flex-row items-center justify-center">
+        <div>&copy; 0xdothis:Customized {new Date().getFullYear()}</div>
       </footer>
       <Toaster />
     </div>
